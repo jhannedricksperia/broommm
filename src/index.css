@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI Variable Text', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  }
+  body {
+    overscroll-behavior: none;
+    background: linear-gradient(135deg, #eaf3ea 0%, #f3f3f3 45%, #f6f4ee 100%) fixed;
+  }
+  .pb-safe {
+    padding-bottom: max(env(safe-area-inset-bottom, 0px), 12px);
+  }
+  .pt-safe {
+    padding-top: max(env(safe-area-inset-top, 0px), 8px);
+  }
+}
+
+/* Material symbols styles */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.material-symbols-outlined.fill-1 {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* ---------- Fluent 2 layer ---------- */
+.bg-background { background-color: transparent; }
+
+.acrylic, header.fixed, nav.fixed {
+  background-color: rgba(255, 255, 255, 0.72) !important;
+  backdrop-filter: blur(30px) saturate(1.6);
+  -webkit-backdrop-filter: blur(30px) saturate(1.6);
+}
+
+:focus-visible { outline: 2px solid #1b5e20; outline-offset: 2px; border-radius: 4px; }
+
+button, a, select, input { transition: transform 120ms cubic-bezier(0.33, 0, 0.67, 1), background-color 150ms, border-color 150ms, box-shadow 150ms, color 150ms; }
+button:not(:disabled):active { transform: scale(0.97); }
+
+.shadow-sm.rounded-xl { transition: box-shadow 200ms cubic-bezier(0.33,0,0.67,1), border-color 200ms; }
+.shadow-sm.rounded-xl:hover { box-shadow: 0 0 2px rgba(0,0,0,0.12), 0 4px 8px rgba(0,0,0,0.14); border-color: rgba(27, 94, 32, 0.4); }
+
+
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-delay: 0ms !important; transition-duration: 0.001ms !important; }
+}
