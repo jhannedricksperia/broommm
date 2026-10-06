@@ -13,9 +13,19 @@ export default function Header() {
   const isHistoryActive = currentScreen === "history";
 
   const activeKey = isHistoryActive ? "history" : "home";
+  // Measure the active tab; re-measure when fonts load or the tabs resize
   useLayoutEffect(() => {
-    const el = navRef.current?.querySelector(`[data-tab="${activeKey}"]`);
-    if (el) setPill({ x: el.offsetLeft, w: el.offsetWidth });
+    const nav = navRef.current;
+    if (!nav) return;
+    const measure = () => {
+      const el = nav.querySelector(`[data-tab="${activeKey}"]`);
+      if (el) setPill((p) => (p && p.x === el.offsetLeft && p.w === el.offsetWidth ? p : { x: el.offsetLeft, w: el.offsetWidth }));
+    };
+    measure();
+    const ro = new ResizeObserver(measure);
+    nav.querySelectorAll("[data-tab]").forEach((b) => ro.observe(b));
+    document.fonts?.ready.then(measure);
+    return () => ro.disconnect();
   }, [activeKey, savedRoutes.length]);
 
   return (

@@ -59,7 +59,7 @@ export default function SplashScreen() {
           <div className="h-1 w-8 bg-secondary-fixed rounded-full"></div>
         </div>
         <p className="text-secondary-fixed font-label-caps uppercase tracking-widest text-xs font-bold mt-1">
-          Metro Manila Transit Engine
+          Metro Manila and Beyond
         </p>
       </div>
 
